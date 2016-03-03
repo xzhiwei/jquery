@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>index</title>
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js"></script>
+	<script src="js/my_pagination.js"></script>
+	<link rel="stylesheet" href="css/bt_pagination.css">
+	<script>
+    
+	$(function(){
+		$('.pagination').applyBtPagination({
+			'items':100, 
+			'itemsOnPage':5,
+			'displayedPages':4,
+			'edges':3,
+			'showtohead':true,
+			'showtofoot':true,
+			'showForword':true,
+			'showBack':true
+		},function(e,topage){
+			alert(topage);
+		});
+	});
+	
+	</script>
+</head>
+<body>
+	<ul class="pagination"></ul>
+</body>
+</html>
