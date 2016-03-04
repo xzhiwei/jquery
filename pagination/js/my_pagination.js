@@ -4,7 +4,9 @@
 	window.pn__callbackFunc__ = function(){
 		return false;
 	};
-	
+	var funnn = function(){
+		return false;
+	}
 	var pageNow = 1,pageCount=1,options="",haveAddForword_=false,isFirstAdd=true;
     var BtPagination = function(ele, opt, func) {
         this.$element = ele,
@@ -20,7 +22,7 @@
         },
         options = this.options = $.extend({}, this.defaults, opt),
         pageCount =this.options.pageCount = this.options.items/this.options.itemsOnPage,
-        window.pn__callbackFunc__ = func;
+        funnn = func;
     };
     
   //定义Beautifier的方法
@@ -62,17 +64,14 @@
     				$(this).removeAttr("onclick");
     				var val = $(this).children().text();
     				if(isNaN(val)){
-    					$(this).attr("onclick","window.pn__defaultFunc__('"+val+"',this);window.pn__callbackFunc__(event,'"+val+"')");
+    					$(this).attr("onclick","window.pn__defaultFunc__('"+val+"',this)");
     				} else {
-    					$(this).attr("onclick","window.pn__defaultFunc__("+val+",this);window.pn__callbackFunc__(event,"+val+")");
+    					$(this).attr("onclick","window.pn__defaultFunc__("+val+",this)");
     				}
     			});
-    			
-	            return this.$element.css({
-	                'color': this.options.color,
-	                'fontSize': this.options.fontSize,
-	                'textDecoration': this.options.textDecoration
-	            });
+    			obj = findObjByText(this.$element.find("li"),1);
+    			$(obj).addClass("active");
+	            return false;
         }
     };
     
@@ -86,7 +85,7 @@
 			}
 			$(delitem).remove();
 			$(obj).before("<li><a href='#'>"+(pageNow-1)+"</a></li>");
-			$(obj).prev().attr("onclick","window.pn__defaultFunc__("+(pageNow-1)+",this);window.pn__callbackFunc__(event,"+(pageNow-1)+")");
+			$(obj).prev().attr("onclick","window.pn__defaultFunc__("+(pageNow-1)+",this)");
 			return true;
 		}
 		return false;
@@ -110,7 +109,7 @@
 					$(delitem).remove();
 				}
 				$(obj).after("<li><a href='#'>"+(pageNow+1)+"</a></li>");
-				$(obj).next().attr("onclick","window.pn__defaultFunc__("+(pageNow+1)+",this);window.pn__callbackFunc__(event,"+(pageNow+1)+")");
+				$(obj).next().attr("onclick","window.pn__defaultFunc__("+(pageNow+1)+",this)");
 				return true;
 			}
 		}
@@ -133,19 +132,20 @@
 		if(pageNow - options.displayedPages >= options.edges){
 			//可以加省略号
 			$(obj).before("<li><a href='#'>...</a></li>");
-			$(obj).prev().attr("onclick","window.pn__defaultFunc__('...',this);window.pn__callbackFunc__(event,'...')");
+			$(obj).prev().attr("onclick","window.pn__defaultFunc__('...',this)");
 		}
 		
 		for(i = 0;i<options.displayedPages;i++){
 			var index = pageNow-options.displayedPages+i;
 			if(index > options.edges){
 				$(obj).before("<li><a href='#'>"+index+"</a></li>");
-				$(obj).prev().attr("onclick","window.pn__defaultFunc__("+index+",this);window.pn__callbackFunc__(event,"+index+")");
+				$(obj).prev().attr("onclick","window.pn__defaultFunc__("+index+",this)");
 			}
 		}
 		obj = $(obj).prev();
 		return obj;
     }
+    
     window.pn__defaultFunc__ = function(val,obj){
 		if(!isNaN(val)){
 			$(obj).siblings().removeClass("active");
@@ -161,10 +161,12 @@
 				obj = findObjByText(objlist,1);
 					$(obj).siblings().removeClass("active");
 					$(obj).addClass("active");
+					pageNow = 1;
 			} else if(val == "»»"){
 				obj = findObjByText(objlist,20);
 				$(obj).siblings().removeClass("active");
 				$(obj).addClass("active");
+				pageNow = 20;
 			} else if(val == "«"){
 				if(pageNow != 1){
 					//向前
@@ -191,7 +193,6 @@
 								}
 								obj =  _forwordForLast(obj);
 							}
-							
 						}
 					}
 					if(obj != undefined){
@@ -217,10 +218,9 @@
 					$(obj).siblings().removeClass("active");
 					$(obj).addClass("active");
 				}
-				
 			}
 		}
-		return false;
+		return funnn(obj,pageNow);
 	};
 	
 	function findObjByText(objlist,val){

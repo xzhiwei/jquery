@@ -19,13 +19,14 @@
 			'showForword':true,
 			'showBack':true
 		},function(e,topage){
-			alert(topage);
+			$("#pageNowSpan").text(topage);
 		});
 	});
 	
 	</script>
 </head>
 <body>
+	当前页码：<span id="pageNowSpan"></span>
 	<ul class="pagination"></ul>
 </body>
 </html>
