@@ -3,16 +3,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>飘落的玫瑰花</title>
+
 <style type="text/css">
 body{
 	overflow:hidden
 }
 .rose-div{
-	position:relative;
+	position:fixed;
+	top:0px;
 	left:30%;
 	right:20%;
 	z-index:1000
 }
+
+.message-div{
+	position:relative;
+	z-index:999999;
+	top:460px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.site__title {
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+  }
+  
+@media (min-width: 650px) {
+  .mega {
+    font-size: 5rem;
+    line-height: 1;
+  }
+}
+
 </style>
 <script type="text/javascript" class="autoinsert" src="js/jquery-1.2.6.min.js"></script> 
 <script src="js/snowfall.jquery.js"></script> 
@@ -28,12 +55,160 @@ body{
 		
 	});
     </script>
+<link rel="stylesheet" href="js/animate.css" />
 </head>
 <body>
+<div class="message-div">
+  <div id="animationSandbox">
+	<h1 id="message" class="site__title mega">亲爱的节日快乐！<img src="images/13.gif"/><img src="images/13.gif"/><img src="images/20.gif"/><img src="images/20.gif"/></h1>
+	
+  </div>
+</div>
 <div class="rose-div">
 	<canvas id="c"></canvas>  
 </div>
+<script>
+function random(min, max) {
+      return Math.round(min + Math.random() * (max - min));
+    };
+	
+	function changeMessageStyle(){
+		var aaa = random(1,100);
+		var bbb = random(1,200);
+		var ccc = random(1,100);
+		$(".message-div").css("top",random(20,460)+"px");
+		if (bbb>0 && bbb <= 10){
+			$("#message").css("color","#FF0000");
+			$("#message").text("今天你好漂亮哦！");
+			$("#message").append("<img src='images/113.gif' height='70' width='70'/>");
+			$("#message").append("<img src='images/113.gif' height='70' width='70'/>");
+			$("#message").append("<img src='images/113.gif' height='70' width='70'/>");
+		} else if(bbb> 10 && bbb <= 20){
+			$("#message").css("color","#EE00EE");
+			$("#message").text("亲爱的节日快乐！");
+			$("#message").append("<img src='images/114.gif' height='70' width='70'/>");
+			$("#message").append("<img src='images/12.gif' height='70' width='70'/>");
+		} else if(bbb> 20 && bbb<= 30){
+			$("#message").css("color","#EE7600");
+			$("#message").text("我想你了！");
+			$("#message").append("<img src='images/52.gif' />");
+			$("#message").append("<img src='images/52.gif' />");
+		} else if(bbb> 30 && bbb<= 40){
+			$("#message").text("你在干啥哩！");
+			$("#message").append("<img src='images/42.gif' />");
+		} else if(bbb> 40 && bbb<= 50){
+			$("#message").text("送你一朵玫瑰花！");
+			$("#message").append("<img src='images/rose.png' height='70' width='70' />");
+		} else if(bbb> 50 && bbb<= 60){
+			$("#message").text("不许乱叫哦！");
+			$("#message").append("<img src='images/113.gif' height='70' width='70' />");
+		} else if(bbb> 60 && bbb<= 70){
+			$("#message").text("一会儿好像要下雨了");
+			$("#message").append("<img src='images/113.gif' height='70' width='70' />");
+		} else if(bbb> 70 && bbb<= 80){
+			$("#message").text("！！！你该吃药了！！！");
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+		}else if(bbb> 80 && bbb<= 90){
+			$("#message").text("想我了?")
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+		}else if(bbb> 90 && bbb<= 100){
+			$("#message").text("哈哈，我知道你想我了！！");
+			$("#message").append("<img src='images/11.gif' height='70' width='70' />");
+			$("#message").append("<img src='images/11.gif' height='70' width='70' />");
+		}else if(bbb> 100 && bbb<= 110){
+			$("#message").text("有空么?约会吧！！");
+			$("#message").append("<img src='images/11.gif' height='70' width='70' />");
+			$("#message").append("<img src='images/11.gif' height='70' width='70' />");
+		}else if(bbb> 110 && bbb<= 120){
+			$("#message").text("今晚过来么？");
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+		}else if(bbb> 120 && bbb<= 130){
+			$("#message").text("听说三八节到了，O(∩_∩)O哈哈~。");
+			$("#message").append("<img src='images/28.gif'  />");
+			$("#message").append("<img src='images/28.gif' />");
+			$("#message").append("<img src='images/28.gif' />");
+			$("#message").append("<img src='images/28.gif' />");
+		}else if(bbb> 130 && bbb<= 140){
+			$("#message").text("我等的花都谢了。。。。。");
+		}else if(bbb> 140 && bbb<= 150){
+			$("#message").text("俺要上班了，不陪你玩了。");
+			$("#message").append("<img src='images/28.gif'  />");
+			$("#message").append("<img src='images/28.gif' />");
+			$("#message").append("<img src='images/28.gif' />");
+			$("#message").append("<img src='images/28.gif' />");
+		}else if(bbb> 150 && bbb<= 160){
+			$("#message").text("It is who first about love ?");
+			$("#message").append("<img src='images/12.gif' height='70' width='70' />");
+		}else if(bbb> 160 && bbb<= 170){
+			$("#message").text("Ｉf you love me, you don't give me up.");
+			$("#message").append("<img src='images/52.gif' />");
+			$("#message").append("<img src='images/52.gif' />");
+		}else if(bbb> 170 && bbb<= 180){
+			$("#message").text("Ｉf you love me, don't leave me.");
+			$("#message").append("<img src='images/3.gif' />");
+			$("#message").append("<img src='images/3.gif' />");
+		}else if(bbb> 180 && bbb<= 190){
+			$("#message").text("We look forward to, our future.");
+			$("#message").append("<img src='images/rose.png' height='70' width='70' />");
+		}else if(bbb> 190 && bbb<= 200){
+			$("#message").text("We believe, our future.");
+			$("#message").append("<img src='images/113.gif' height='70' width='70' />");
+		}
+		
+		if (ccc>0 && ccc <= 10){
+			$("#message").css("color","#FF0000");
+		} else if(ccc> 10 && ccc <= 20){
+			$("#message").css("color","#008B00");
+		} else if(ccc> 20 && ccc<= 30){
+			$("#message").css("color","#EE7600");
+		} else if(ccc> 30 && ccc<= 40){
+			$("#message").css("color","#EE4000");
+		} else if(ccc> 40 && ccc<= 50){
+			$("#message").css("color","#912CEE");
+		} else if(ccc> 50 && ccc<= 60){
+			$("#message").css("color","#8B2252");
+		} else if(ccc> 60 && ccc<= 70){
+			$("#message").css("color","#7D26CD");
+		} else if(ccc> 70 && ccc<= 80){
+			$("#message").css("color","#383838");
+		}else if(ccc> 80 && ccc<= 90){
+			$("#message").css("color","#00CDCD");
+		}else if(ccc> 90 && ccc<= 100){
+			$("#message").css("color","#00EE00");
+		}
+		
+		if (aaa>0 && aaa <= 10){
+			$("#animationSandbox").removeClass().addClass("bounceInDown animated");
+		} else if(aaa> 10 && aaa <= 20){
+			$("#animationSandbox").removeClass().addClass("rotateln animated");
+		} else if(aaa> 20 && aaa<= 30){
+			$("#animationSandbox").removeClass().addClass("zoomIn animated");
+		} else if(aaa> 30 && aaa<= 40){
+			$("#animationSandbox").removeClass().addClass("rubberBand animated");
+		} else if(aaa> 40 && aaa<= 50){
+			$("#animationSandbox").removeClass().addClass("rollIn animated");
+		} else if(aaa> 50 && aaa<= 60){
+			$("#animationSandbox").removeClass().addClass("wobble animated");
+		} else if(aaa> 60 && aaa<= 70){
+			$("#animationSandbox").removeClass().addClass("zoomInDown animated");
+		} else if(aaa> 70 && aaa<= 80){
+			$("#animationSandbox").removeClass().addClass("slideOutUp animated");
+		}else if(aaa> 80 && aaa<= 90){
+			$("#animationSandbox").removeClass().addClass("rorateOutUpLeft animated");
+		}else if(aaa> 90 && aaa<= 100){
+			$("#animationSandbox").removeClass().addClass("lightSpeedIn animated");
+		}
+		
+		return true;
+	};
+$(document).ready(function(){
+	setInterval("changeMessageStyle()",2500);
+});
+</script>
 
+  
 <script>  
 var b = document.body;  
 var c = document.getElementsByTagName('canvas')[0];
@@ -41,6 +216,7 @@ var a = c.getContext('2d');
 </script>  
 <script>
 with(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=600;h=-250;function p(a,b,c){if(c>60)return[S(a*7)*(13+5/(.2+P(b*4,4)))-S(b)*50,b*f+50,625+C(a*7)*(13+5/(.2+P(b*4,4)))+b*400,a*1-b/2,a];A=a*2-1;B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5/(a+.01)+C(b*125)*3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)/5+P(C((o*(a+1)+(B>0?w:-w))/25),30)*.1*(1-B*B),o/1e3+.7-o*w*3e-6]}if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z/2-h,z,(b*b*.3+P((1-(A*A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b, 7))*50-c/3-z/1.35+450,z,(1-b/1.2)*.9+a*.1, P((1-b),20)/4+.05]}}setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}',0)
-</script> 
+</script>
+
 </body>
 </html>
